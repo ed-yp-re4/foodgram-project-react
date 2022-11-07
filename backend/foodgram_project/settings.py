@@ -62,6 +62,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodgram_project.wsgi.application'
 
+# Добавить дефолтные значения?
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
