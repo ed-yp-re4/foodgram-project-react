@@ -24,7 +24,6 @@ class User(AbstractUser):
         help_text='Username',
         max_length=150,
         unique=True,
-        db_index=True,
     )
 
     class Meta:
@@ -50,7 +49,7 @@ class SubscribeUser(models.Model):
         null=False,
         related_name='subscribe',
         verbose_name='Автор',
-        help_text='Автор, на которого подписаны',
+        help_text='Автор, на которого подписаны'
     )
 
     class Meta:

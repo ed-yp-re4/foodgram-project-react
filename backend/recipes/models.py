@@ -21,6 +21,7 @@ class Recipe(models.Model):
         max_length=200,
         verbose_name='Название',
         help_text='Название',
+        db_index=True,
     )
     text = models.TextField(
         verbose_name='Описание',
@@ -43,13 +44,13 @@ class Recipe(models.Model):
         Tag,
         through='RecipeTag',
         verbose_name='Тег',
-        help_text='Тег'
+        help_text='Тег',
     )
     ingredients = models.ManyToManyField(
         Ingredient,
         through='RecipeIngredientAmount',
         verbose_name='Список ингредиентов',
-        help_text='Список ингредиентов'
+        help_text='Список ингредиентов',
     )
 
     class Meta:
@@ -77,10 +78,10 @@ class RecipeTag(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Тег',
         help_text='Тег',
-        db_index=True,
     )
 
     class Meta:
+        ordering = ('tag',)
         verbose_name = 'Тег рецепта'
         verbose_name_plural = 'Теги рецептов'
         constraints = (
@@ -104,7 +105,6 @@ class RecipeIngredientAmount(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Рецепт',
         help_text='Рецепт',
-        db_index=True,
     )
     ingredient = models.ForeignKey(
         Ingredient,
@@ -148,7 +148,7 @@ class UserFavoriteRecipe(models.Model):
         null=False,
         related_name='favorite_recipes',
         verbose_name='Пользователь',
-        help_text='Пользователь'
+        help_text='Пользователь',
     )
     recipe = models.ForeignKey(
         Recipe,
@@ -189,7 +189,7 @@ class UserShoppingCart(models.Model):
         null=False,
         related_name='in_shopping',
         verbose_name='Рецепт',
-        help_text='Рецепт'
+        help_text='Рецепт',
     )
 
     class Meta:

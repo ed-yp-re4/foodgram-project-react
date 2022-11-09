@@ -13,18 +13,19 @@ class Tag(models.Model):
         max_length=7,
         verbose_name='Цвет',
         help_text='Цвет',
-        unique=True
+        unique=True,
     )
     slug = models.SlugField(
         max_length=200,
         verbose_name='Slug',
         help_text='Slug',
         unique=True,
+        db_index=True,
     )
 
     class Meta:
-        verbose_name = 'Тег'
-        verbose_name_plural = 'Теги'
+        verbose_name = 'Тег',
+        verbose_name_plural = 'Теги',
         ordering = ('slug',)
 
     def __str__(self):
