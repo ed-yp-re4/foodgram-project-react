@@ -75,7 +75,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
-        user = super(UserCreateSerializer, self).create(validated_data)
+        user = super().create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
@@ -89,7 +89,7 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
     def validate_username(self, value):
         pattern = PROJECT_SETTINGS.get(
-            'users_validate_patter_username', r'^[\w.@+-]+\Z')
+            'USERS_VALIDATE_PATTER_USERNAME', r'^[\w.@+-]+\Z')
         if match(pattern, value):
             return value
 
@@ -208,7 +208,7 @@ class AmountSerialazer(serializers.Serializer):
     amount = serializers.IntegerField(required=True)
 
     def validate_amount(self, value):
-        min_value = PROJECT_SETTINGS.get('ingredient_min_amount', 1)
+        min_value = PROJECT_SETTINGS.get('INGREDIENT_MIN_AMOUNT', 1)
         if value >= min_value:
             return value
         raise serializers.ValidationError(
@@ -238,7 +238,7 @@ class ResipeEditSerializer(serializers.ModelSerializer):
         )
 
     def validate_cooking_time(self, value):
-        min_value = PROJECT_SETTINGS.get('recipes_min_cooking_time', 1)
+        min_value = PROJECT_SETTINGS.get('RECIPES_MIN_COOKING_TIME', 1)
         if value >= min_value:
             return value
         raise serializers.ValidationError(

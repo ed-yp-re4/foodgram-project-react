@@ -31,7 +31,7 @@ class Recipe(models.Model):
         help_text='Время приготовления',
         validators=(
             MinValueValidator(
-                limit_value=PROJECT_SETTINGS.get('recipes_min_cooking_time', 1)
+                limit_value=PROJECT_SETTINGS.get('RECIPES_MIN_COOKING_TIME', 1)
             ),
         )
     )
@@ -117,7 +117,7 @@ class RecipeIngredientAmount(models.Model):
         help_text='Количество',
         validators=(
             MinValueValidator(
-                limit_value=PROJECT_SETTINGS.get('ingredient_min_amount', 1)
+                limit_value=PROJECT_SETTINGS.get('INGREDIENT_MIN_AMOUNT', 1)
             ),
         )
     )

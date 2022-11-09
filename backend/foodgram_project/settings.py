@@ -5,13 +5,11 @@ load_dotenv()
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Убрать сикреткей по умолчению из сеттинг?
 SECRET_KEY = os.getenv(
     'SECRET_KEY', 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs')
 
 DEBUG = os.environ.get('DEBUG', default=True)
 
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', os.getenv('ALLOWED_HOST')]
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', ]
 ALLOWED_HOSTS += [os.getenv('ALLOWED_HOST')]
 
@@ -62,18 +60,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodgram_project.wsgi.application'
 
-# Добавить дефолтные значения?
 DATABASES = {
     'default': {
         'ENGINE': os.getenv('DB_ENGINE', 'django.db.backends.postgresql'),
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASS'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT')
+        'NAME': os.getenv('DB_NAME', 'foodgram'),
+        'USER': os.getenv('DB_USER', 'foodgram_user'),
+        'PASSWORD': os.getenv('DB_PASS', 'foodgram_user_123'),
+        'HOST': os.getenv('DB_HOST', 'db'),
+        'PORT': os.getenv('DB_PORT', '5432')
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -123,7 +119,7 @@ REST_FRAMEWORK = {
 }
 
 PROJECT_SETTINGS = {
-    'recipes_min_cooking_time': 1,
-    'ingredient_min_amount': 1,
-    'users_validate_patter_username': r'^[\w.@+-]+\Z'
+    'RECIPES_MIN_COOKING_TIME': 1,
+    'INGREDIENT_MIN_AMOUNT': 1,
+    'USERS_VALIDATE_PATTER_USERNAME': r'^[\w.@+-]+\Z'
 }
