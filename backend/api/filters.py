@@ -29,7 +29,6 @@ class RecipeFilter(FilterSet):
 
     def get_favorited_filter(self, queryset, name, value):
 
-        # user = getattr(self.request, 'user', None)
         user = self.request.user
         if user and user.is_authenticated:
             if value == '1':
@@ -40,7 +39,7 @@ class RecipeFilter(FilterSet):
 
     def get_in_shopping_cart_filter(self, queryset, name, value):
 
-        user = getattr(self.request, 'user', None)
+        user = self.request.user
         if user and user.is_authenticated:
             if value == '1':
                 return queryset.filter(in_shopping__user=user)

@@ -6,9 +6,10 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 
-from rest_framework import decorators, mixins, permissions, status, viewsets
+from rest_framework import mixins, permissions, status, viewsets
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
+from rest_framework.decorators import api_view, action
 
 from api.filters import IngredientFilter, RecipeFilter
 from api.paginators import PageNumberCustomPaginator
@@ -28,7 +29,7 @@ from users.models import SubscribeUser
 User = get_user_model()
 
 
-@decorators.api_view(('POST',))
+@api_view(['POST',])
 def get_token(request):
     serializer = GetTokenSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
@@ -44,7 +45,7 @@ def get_token(request):
     return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
-@decorators.api_view(('POST',))
+@api_view(['POST', ])
 def drop_token(request):
     user: User = request.user
     if user.is_authenticated:
@@ -95,7 +96,7 @@ class UserViewSet(
             headers=headers
         )
 
-    @decorators.action(
+    @action(
         methods=('get',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=False,
@@ -107,7 +108,7 @@ class UserViewSet(
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
-    @decorators.action(
+    @action(
         methods=('post',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=False,
@@ -125,7 +126,7 @@ class UserViewSet(
         user.save()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    @decorators.action(
+    @action(
         methods=('post', 'delete'),
         permission_classes=(permissions.IsAuthenticated,),
         detail=True,
@@ -179,7 +180,7 @@ class UserViewSet(
             status=status.HTTP_400_BAD_REQUEST,
         )
 
-    @decorators.action(
+    @action(
         methods=('get',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=False,
@@ -238,7 +239,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             output_serializer.data,
             status=status.HTTP_200_OK,)
 
-    @decorators.action(
+    @action(
         methods=('post', 'delete',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=True,
@@ -287,7 +288,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST,
         )
 
-    @decorators.action(
+    @action(
         methods=('post', 'delete',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=True,
@@ -336,7 +337,7 @@ class RecipeViewSet(viewsets.ModelViewSet):
             status=status.HTTP_400_BAD_REQUEST,
         )
 
-    @decorators.action(
+    @action(
         methods=('get',),
         permission_classes=(permissions.IsAuthenticated,),
         detail=False,
