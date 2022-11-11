@@ -1,2 +1,2 @@
 # praktikum_new_diplom
-123456789
+0
