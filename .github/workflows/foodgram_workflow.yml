@@ -58,12 +58,9 @@ jobs:
         passphrase: ${{ secrets.HOST_PASSPHRASE }}
         script: |
           
-          sudo docker-compose down -v
-
+          sudo docker compose down -v
           sudo docker image rm zlayada/foodgram-backend:latest
           rm .env
-          
-          sudo docker pull zlayada/foodgram-backend:latest
 
           touch .env
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
