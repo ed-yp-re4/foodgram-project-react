@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   db:
     image: postgres:13.0-alpine
@@ -6,6 +7,22 @@ services:
       - dbdata:/var/lib/postgresql/data/
     env_file:
       - ./.env
+
+  frontend:
+    image: zlayada/foodgram-frontend:latest 
+    volumes:
+      - ./frontend/:/app/result_build/
+    depends_on:
+      - db
+
+#  frontend:
+#    build:
+#      context: ../frontend
+#      dockerfile: Dockerfile
+#    volumes:
+#      - ../frontend/:/app/result_build/
+#    depends_on:
+#      - web
 
   web:
     image: zlayada/foodgram-backend:latest
@@ -17,15 +34,6 @@ services:
       - db
     env_file:
       - ./.env
-
-  frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
-    volumes:
-      - ../frontend/:/app/result_build/
-    depends_on:
-      - web
 
   nginx:
     image: nginx:1.19.3
