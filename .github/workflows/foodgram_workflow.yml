@@ -63,6 +63,10 @@ jobs:
         key: ${{ secrets.HOST_SSH_KEY }}
         passphrase: ${{ secrets.HOST_PASSPHRASE }}
         script: |
+          
+          sudo docker rm zlayada/foodgram-backend:latest
+          sudo docker rm zlayada/foodgram-frontend:latest
+          
           sudo docker pull zlayada/foodgram-backend:latest
           sudo docker pull zlayada/foodgram-frontend:latest
    
