@@ -1,5 +1,11 @@
 # praktikum_new_diplom
-http://62.84.127.94/api/docs/
-http://62.84.127.94/admin/
-http://62.84.127.94/api/
-http://62.84.127.94/
+`http://62.84.127.94/api/docs/`
+`http://62.84.127.94/admin/`
+`http://62.84.127.94/api/`
+`http://62.84.127.94/`
+
+### Суперпользователь
+`username: admin`
+`password: admin`
+
+
