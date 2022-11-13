@@ -1,6 +1,6 @@
 # praktikum_new_diplom
-![example workflow](https://github.com/ed-yp-re4/yamdb_final/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
- 
+![example workflow](https://github.com/ed-yp-re4/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+
 ```
 http://62.84.127.94/api/docs/
 ```
