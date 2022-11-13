@@ -1,4 +1,5 @@
 # praktikum_new_diplom
-1234534
-
-1
+http://62.84.127.94/api/docs/
+http://62.84.127.94/admin/
+http://62.84.127.94/api/
+http://62.84.127.94/
