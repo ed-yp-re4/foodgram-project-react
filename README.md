@@ -1,3 +1,3 @@
 # praktikum_new_diplom
-12345
+1234534
 
