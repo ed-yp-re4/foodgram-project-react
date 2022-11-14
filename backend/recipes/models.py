@@ -21,7 +21,7 @@ class Recipe(models.Model):
         max_length=200,
         verbose_name='Название',
         help_text='Название',
-        db_index=True,
+        # db_index=True,
     )
     text = models.TextField(
         verbose_name='Описание',
@@ -52,12 +52,17 @@ class Recipe(models.Model):
         verbose_name='Список ингредиентов',
         help_text='Список ингредиентов',
     )
-    
+    #pub_date = models.DateTimeField(
+    #    'Дата публикации',
+    #    auto_now_add=True
+    #)
+
 
     class Meta:
         verbose_name = 'Рецепт'
         verbose_name_plural = 'Рецепты'
-        ordering = ('name',)
+        #ordering = ('-pub_date',)
+        ordering = ('-pk',)
 
     def __str__(self) -> str:
         return f'Рецепт: {self.name}'
