@@ -93,19 +93,17 @@ sudo docker-compose exec web python manage.py add_tags_from_data
 sudo docker-compose exec web python manage.py add_ingredients_from_data
 ```
 ### Доступ к проекту:
-```http://<ваш IP>/api/docs/``` - документация
-```http://<ваш IP>/api/``` - API проекта
-```http://<ваш IP>/admin``` - панель администратора
-```http://<ваш IP>/``` - проект
+```http://<ваш IP>/api/docs/``` - документация  
+```http://<ваш IP>/api/``` - API проекта  
+```http://<ваш IP>/admin``` - панель администратора  
+```http://<ваш IP>/``` - проект  
 
 ### Проект развернут:
-```http://62.84.127.94/api/docs/``` 
-```http://62.84.127.94/admin/```
-```http://62.84.127.94/api/```
-```http://62.84.127.94/```
+```http://62.84.127.94/api/docs/```  
+```http://62.84.127.94/admin/```  
+```http://62.84.127.94/api/```  
+```http://62.84.127.94/```  
 
 ### Суперпользователь
-`username: admin`
-`password: admin`
-
-
+`username: admin`  
+`password: admin`  
